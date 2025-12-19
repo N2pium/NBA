@@ -12,5 +12,12 @@ sys.path.insert(0, str(BASE_DIR / 'website'))
 # Set the default settings module
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'website.settings')
 
+print("Sys Path:", sys.path)
+import website
+print("Website package file:", website.__file__)
+config = __import__('website.settings')
+print("Config loaded:", config)
+
+
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
