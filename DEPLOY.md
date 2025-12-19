@@ -26,8 +26,8 @@ Your project is now fully configured for production deployment!
 2.  Click **"New"** -> **"Web Service"**.
 3.  Connect your GitHub repo.
 4.  **Runtime**: Python 3.
-5.  **Build Command**: `pip install -r requirements.txt && python manage.py collectstatic --noinput`
-6.  **Start Command**: `gunicorn website.wsgi:application`
+5.  **Build Command**: `pip install -r requirements.txt && python website/manage.py collectstatic --noinput`
+6.  **Start Command**: `gunicorn --chdir website website.wsgi:application`
 7.  **Environment Variables**:
     - `PYTHON_VERSION`: `3.12.0`
     - `SECRET_KEY`: (Generate a long random string)
