@@ -1,0 +1,29 @@
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Environment Variables
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large Files
+NBA_games_merged.csv

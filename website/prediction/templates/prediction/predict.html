@@ -1,0 +1,31 @@
+{% extends 'prediction/base.html' %}
+{% load static %}
+
+{% block title %}NBA Matchup Predictor{% endblock %}
+
+{% block content %}
+<div class="prediction-container">
+    <h1>Predict NBA Matchup</h1>
+    <p>Select two teams to predict the winner based on our machine learning model.</p>
+
+    <form method="post" class="prediction-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn">Predict Winner</button>
+    </form>
+
+    {% if result %}
+    <div class="result-container">
+        <h2>Predicted Winner: <span class="winner-name">{{ result }}</span></h2>
+    </div>
+    {% endif %}
+
+    {% if form.errors %}
+    <div class="error-container">
+        <p>There was an error with your submission. Please check your inputs.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

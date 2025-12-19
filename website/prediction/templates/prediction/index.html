@@ -1,0 +1,109 @@
+{% extends 'prediction/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-section text-center text-white d-flex align-items-center justify-content-center">
+  <div class="container">
+    <h1 class="display-3 fw-bold text-uppercase mb-3">Court Side Predictions</h1>
+    <p class="lead mb-4 fs-4">Advanced analytics driving every prediction.</p>
+    <a href="#predictions" class="btn btn-warning btn-lg text-uppercase fw-bold px-5 py-3 shadow">See Matchups</a>
+  </div>
+</div>
+
+<div class="container my-5" id="predictions">
+  <div class="row text-center mb-5">
+    <div class="col">
+      <h2 class="text-uppercase fw-bold section-title">Today's Games</h2>
+      <hr class="mx-auto" style="width: 100px; height: 3px; background-color: #C9082A; opacity: 1;">
+    </div>
+  </div>
+
+  <div class="row g-4">
+    {% if todays_games %}
+    {% for game in todays_games %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 border-0 shadow-sm prediction-card">
+        <div class="card-body text-center">
+          <!-- Check data structure. Live API usually calls them homeTeam and awayTeam -->
+          <h5 class="card-title fw-bold text-muted">
+            {{ game.awayTeam.teamTricode }} @ {{ game.homeTeam.teamTricode }}
+          </h5>
+          <div class="display-6 my-3 fw-bold text-dark-orange">
+            {{ game.gameStatusText }}
+          </div>
+          <p class="card-text text-muted">
+            {{ game.arena.name }}
+          </p>
+          <div class="d-flex justify-content-between px-4 mt-3">
+            <div>
+              <span class="fw-bold">{{ game.awayTeam.teamTricode }}</span><br>
+              <span class="fs-4">{{ game.awayTeam.score }}</span>
+            </div>
+            <div>
+              <span class="fw-bold">{{ game.homeTeam.teamTricode }}</span><br>
+              <span class="fs-4">{{ game.homeTeam.score }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="col-12 text-center">
+      <p class="lead text-muted">No games scheduled for today.</p>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Upcoming Games Section -->
+  <div class="row text-center mt-5 mb-4">
+    <div class="col">
+      <h2 class="text-uppercase fw-bold section-title">Upcoming Schedule</h2>
+      <hr class="mx-auto" style="width: 100px; height: 3px; background-color: #C9082A; opacity: 1;">
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      {% if upcoming_games %}
+      <div class="accordion" id="scheduleAccordion">
+        {% for date_str, games in upcoming_games.items %}
+        <div class="accordion-item border-0 mb-3 shadow-sm rounded overflow-hidden">
+          <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %} fw-bold" type="button"
+              data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}"
+              aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-controls="collapse{{ forloop.counter }}">
+              {{ date_str }}
+            </button>
+          </h2>
+          <div id="collapse{{ forloop.counter }}"
+            class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+            aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#scheduleAccordion">
+            <div class="accordion-body p-0">
+              <ul class="list-group list-group-flush">
+                {% for game in games %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span>
+                    <strong>{{ game.visitor_team_name }}</strong> @ <strong>{{ game.home_team_name }}</strong>
+                  </span>
+                  {% if game.NATL_TV_BROADCASTER_ABBREVIATION %}
+                  <span class="badge bg-danger text-white">{{ game.NATL_TV_BROADCASTER_ABBREVIATION }}</span>
+                  {% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="text-center">
+        <p class="text-muted">No upcoming games found for the week.</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

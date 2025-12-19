@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}NBA Predictions{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Link to your app static CSS -->
+    <link rel="stylesheet" href="{% static 'prediction/css/style.css' %}">
+    <!-- Optional: Bootstrap CDN for layout -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% block head %}{% endblock %}
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark-orange shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+                    <span class="fs-4 fw-bold">🏀 NBA PREDICTIONS</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto text-uppercase fw-bold">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'predict' %}">Predict</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/N2pium" target="_blank">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="text-center py-4 mt-auto text-white" style="background-color: #1a1a1a;">
+        <div class="container">
+            <small class="d-block mb-1">&copy; {% now "Y" %} NBA Predictions Project</small>
+            <small class="text-muted">Built for basketball fans.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

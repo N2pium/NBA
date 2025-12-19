@@ -1,0 +1,80 @@
+/* Base Styles using Google Fonts */
+:root {
+    --nba-red: #C9082A;
+    --nba-blue: #17408B;
+    --market-black: #1a1a1a;
+    --pure-white: #ffffff;
+    --court-orange: #d65a18; /* A nice basketball orange */
+    --faded-court: #f8f9fa;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--faded-court);
+    color: var(--market-black);
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .btn {
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Basketball Theme Colors */
+.bg-dark-orange {
+    background-color: var(--court-orange) !important;
+    background: linear-gradient(90deg, #d65a18 0%, #C9082A 100%);
+}
+
+.text-dark-orange {
+    color: var(--court-orange) !important;
+}
+
+/* Navbar Customization */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,0.9);
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffcc00; /* Gold highlight on hover */
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1546519639-65e1dbba1619?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'); /* Basketball court image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 60vh;
+    min-height: 400px;
+    border-bottom: 5px solid var(--nba-red);
+}
+
+/* Cards */
+.prediction-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid transparent !important;
+}
+
+.prediction-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    border-top: 4px solid var(--court-orange) !important;
+}
+
+/* Section Titles */
+.section-title {
+    letter-spacing: 2px;
+    color: var(--market-black);
+}
+
+/* Buttons */
+.btn-warning {
+    background-color: #ffcc00;
+    border-color: #ffcc00;
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: #e6b800;
+    border-color: #dbb000;
+}

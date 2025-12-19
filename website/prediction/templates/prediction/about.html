@@ -1,0 +1,57 @@
+{% extends 'prediction/base.html' %}
+{% load static %}
+
+{% block title %}About - NBA Predictions{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-dark-orange text-white p-4 text-center">
+                    <h1 class="display-5 fw-bold mb-0 text-uppercase">About The Project</h1>
+                </div>
+                <div class="card-body p-5">
+                    <div class="mb-5">
+                        <h2 class="h3 fw-bold text-dark-orange mb-3">The Mission</h2>
+                        <p class="fs-5 text-muted">
+                            This project aims to leverage machine learning algorithms to predict the outcomes of NBA
+                            games with high accuracy.
+                            By analyzing historical data from the past 10 years, player observations, and team
+                            statistics, we strive to provide
+                            basketball fans with
+                            insightful analytics and prediction confidence scores.
+                        </p>
+                    </div>
+
+                    <hr class="my-5">
+
+                    <div class="d-flex align-items-start">
+                        <!-- Placeholder for an image if needed, or just text -->
+                        <div>
+                            <h2 class="h3 fw-bold text-dark-orange mb-3">Who Am I?</h2>
+                            <p class="fs-5 text-muted mb-4">
+                                Hey there! I'm a Junior studying Computer Science. I have a passion for both technology
+                                and basketball,
+                                which led me to combine these interests into this prediction engine.
+                            </p>
+                            <div class="alert alert-light border-start border-4 border-warning shadow-sm" role="alert">
+                                <p class="mb-0 fst-italic">"Junior year in college, studying computer science and im
+                                    currently
+                                    a chud with no motion trying to get an internship in the field of computer science.
+                                    "</p>
+                            </div>
+
+                            <div class="mt-4">
+                                <a href="https://github.com/N2pium" target="_blank" class="btn btn-outline-dark btn-lg">
+                                    <i class="bi bi-github"></i> Check out my GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
